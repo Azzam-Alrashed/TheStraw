@@ -19,7 +19,7 @@ namespace TheStraw.Player
         private void FixedUpdate()
         {
             Vector2 direction = Vector2.ClampMagnitude(input.Movement, 1f);
-            Vector2 nextPosition = body.position + direction * movementSpeed * Time.fixedDeltaTime;
+            Vector2 nextPosition = body.position + direction * movementSpeed * UnityEngine.Time.fixedDeltaTime;
 
             body.MovePosition(nextPosition);
         }
