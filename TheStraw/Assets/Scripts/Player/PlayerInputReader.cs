@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TheStraw.UI;
 
 namespace TheStraw.Player
 {
@@ -20,13 +21,26 @@ namespace TheStraw.Player
 
         public Vector2 Movement => GameplayInputEnabled ? moveAction?.ReadValue<Vector2>() ?? Vector2.zero : Vector2.zero;
         public bool InteractPressed => GameplayInputEnabled && interactAction != null && interactAction.WasPressedThisFrame();
-        public bool PausePressed => pauseAction != null && pauseAction.WasPressedThisFrame();
+        /// <summary>
+        /// Returns whether the pause command was pressed. The device checks are a deliberate
+        /// fallback for platform UI paths that can consume an action-map binding.
+        /// </summary>
+        public bool PausePressed => (pauseAction != null && pauseAction.WasPressedThisFrame())
+            || (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+            || (Gamepad.current != null && Gamepad.current.startButton.wasPressedThisFrame);
 
         private void Awake()
         {
             moveAction = inputActions.FindAction(MoveActionName, true);
             interactAction = inputActions.FindAction(InteractActionName, true);
             pauseAction = inputActions.FindAction(PauseActionName, true);
+
+            // The player is the Office gameplay entry point. Ensure the pause controller is
+            // present even when a scene was created before the pause-menu component existed.
+            if (GetComponent<PauseMenuController>() == null)
+            {
+                gameObject.AddComponent<PauseMenuController>();
+            }
         }
 
         private void OnEnable()
