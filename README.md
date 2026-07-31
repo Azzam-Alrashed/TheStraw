@@ -1,4 +1,4 @@
-# The Straw
+<img width="200" alt="the straw logo" src="https://github.com/user-attachments/assets/7e2138aa-3ab3-49ec-8bf6-9ec9a6f99d86" />
 
 > *that broke the camel's back*
 
