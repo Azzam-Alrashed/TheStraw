@@ -1,0 +1,19 @@
+# Unity-generated
+/TheStraw/[Ll]ibrary/
+/TheStraw/[Tt]emp/
+/TheStraw/[Oo]bj/
+/TheStraw/[Ll]ogs/
+/TheStraw/[Uu]serSettings/
+
+# IDE-generated
+/TheStraw/*.csproj
+/TheStraw/*.sln
+/TheStraw/*.slnx
+/TheStraw/.vs/
+/TheStraw/.vscode/
+
+# OS-generated
+.DS_Store
+
+# Local third-party asset source (install separately)
+/TheStraw/Assets/ThirdParty/LimeZu/
